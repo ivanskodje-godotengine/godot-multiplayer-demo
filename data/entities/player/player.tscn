@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://data/entities/player/scripts/player.gd" type="Script" id=1]
+[ext_resource path="res://data/entities/player/player_sprite_human.tscn" type="PackedScene" id=2]
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[node name="player" type="RigidBody2D"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+mode = 2
+mass = 1.0
+friction = 0.0
+bounce = 0.0
+gravity_scale = 0.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+velocity/linear = Vector2( 0, 0 )
+velocity/angular = 0.0
+damp_override/linear = 7.5
+damp_override/angular = -1.0
+script/script = ExtResource( 1 )
+speed_default = 1000.0
+sprint_speed = 2.5
+
+[node name="player_sprite_human" parent="." instance=ExtResource( 2 )]
+
+transform/rot = -180.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="hud" type="Node2D" parent="."]
+
+[node name="player_name" type="Label" parent="hud"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -163.0
+margin/top = -37.0
+margin/right = 162.0
+margin/bottom = -8.0
+align = 1
+valign = 1
+percent_visible = 0.75
+lines_skipped = 0
+max_lines_visible = -1
+
+

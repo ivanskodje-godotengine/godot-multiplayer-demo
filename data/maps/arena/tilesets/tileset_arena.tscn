@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://data/maps/arena/textures/void.png" type="Texture" id=1]
+[ext_resource path="res://data/maps/arena/textures/01.png" type="Texture" id=2]
+[ext_resource path="res://data/maps/arena/textures/02.png" type="Texture" id=3]
+[ext_resource path="res://data/maps/arena/textures/03.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[node name="tileset_arena" type="Node2D"]
+
+[node name="void" type="Sprite" parent="."]
+
+transform/pos = Vector2( 26, 26 )
+texture = ExtResource( 1 )
+
+[node name="floor_1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 76, 26 )
+texture = ExtResource( 2 )
+
+[node name="floor_2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 126, 26 )
+texture = ExtResource( 3 )
+
+[node name="wall_1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 176, 26 )
+texture = ExtResource( 4 )
+
+[node name="static_body_2d" type="StaticBody2D" parent="wall_1"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="wall_1/static_body_2d"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="note" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 10.0
+margin/top = -40.0
+margin/right = 201.0
+margin/bottom = -9.0
+text = "Export TileSet: \nScene -> Convert To -> TileSet"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+
